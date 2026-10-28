@@ -24,4 +24,4 @@ Download the complete ZIP from [the public site](https://michaeljabbour.github.i
 
 Bring the existing project notes, current request and relevant files. Capture a handoff, resume read-only, or check a record without inventing missing decisions.
 
-Automatic memory. The next collaborator needs to receive or read the saved record.
+The next collaborator needs to receive or read the saved record.
