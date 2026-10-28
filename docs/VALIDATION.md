@@ -1,6 +1,9 @@
 # Local validation — 2026-10-28
 
-Project Handoff is built locally. It has not been pushed, published, installed globally or used by an outside user in this evaluation.
+**Publication update, October 28, 2026:** The [public source](https://github.com/michaeljabbour/amplifier-skill-project-handoff) and [live site](https://michaeljabbour.github.io/amplifier-skill-project-handoff/) are released. Fresh anonymous source installation and the live four-file ZIP were verified. The sections below retain the earlier local validation scope and study limits; they do not describe the current publication state. No study result or frozen input changed for publication.
+
+
+The initial evaluation built Project Handoff locally. At that stage it had not been pushed or published. It was not installed globally or used by an outside user in the evaluation.
 
 ## Portable package
 
@@ -34,4 +37,4 @@ Final build, repository/link checks and JavaScript syntax checks passed: 28 loca
 
 The reviewer helper now refuses unpriced provider/model pairs before creating a run or calling a provider, and reserves cost at each supported model's documented rates. Its rejection path was checked without another paid review. The prior recorded application outputs remain unchanged.
 
-The sibling Right Shape checkout remained clean. Browser sizing overrides were removed after inspection. Publication and user acceptance remain separate steps; this release remains a local Git checkout without a remote.
+The sibling Right Shape checkout remained clean. Browser sizing overrides were removed after inspection. The initial delivery was a local checkout; public source and site verification were completed afterward at the links above. Global host installation and outside-user acceptance remain separate.

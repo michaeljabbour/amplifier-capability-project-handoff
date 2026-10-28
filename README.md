@@ -20,7 +20,7 @@ Requires Git and Python 3.11+. Use the skills directory supported by your agent.
 
 ## Install locally
 
-This is a local build. No public repository or deployed site is claimed.
+The [public source](https://github.com/michaeljabbour/amplifier-skill-project-handoff) and [site with complete portable download](https://michaeljabbour.github.io/amplifier-skill-project-handoff/) are available. The skill installs without Memory.
 
 From this checkout, install into the skills directory your host uses:
 

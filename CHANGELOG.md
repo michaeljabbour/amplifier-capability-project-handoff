@@ -2,6 +2,7 @@
 
 ## 2026-10-28 — Public first use
 
+- Correct stale prepublication wording in the README and label the earlier validation snapshot.
 - Add a complete public clone/install path beside the first useful outcome, with prerequisites, safe updates and a full-folder ZIP alternative. Preserve the existing method, films and interactive examples.
 
 
