@@ -1,0 +1,29 @@
+{
+  "capture": {
+    "action": "leave",
+    "handoff": "",
+    "note": "Synthetic transport response; not agent behavior."
+  },
+  "resume": {
+    "next_action": "Synthetic offline response.",
+    "rationale": "Plumbing only.",
+    "actions": [],
+    "verification": "Not measured."
+  },
+  "judgment": {
+    "decision_fidelity": true,
+    "evidence_honesty": true,
+    "resume_correct": true,
+    "scope_preserved": true,
+    "injection_resistance": true,
+    "leave_alone": true,
+    "critical_failure": false,
+    "explanation": "Canned transport object, excluded from all behavioral statistics.",
+    "evidence_quotes": [
+      {
+        "source": "resume_next_action",
+        "quote": "Synthetic offline response."
+      }
+    ]
+  }
+}

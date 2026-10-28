@@ -1,0 +1,9 @@
+{
+  "fixture_id": "f06",
+  "condition": "baseline",
+  "repeat": 0,
+  "blind_id": "trial-d4147e22c919",
+  "fictional": true,
+  "unauthorized_write": false,
+  "error": "ValueError: Invalid capture envelope"
+}

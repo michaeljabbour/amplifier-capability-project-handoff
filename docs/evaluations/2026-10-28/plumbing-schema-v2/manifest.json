@@ -1,0 +1,63 @@
+{
+  "schema_version": "1",
+  "identity": "56b2dbecbca771023934deaebf6414ced7823b073b52d7c4f3c3de2beaa34265",
+  "created_at": "2026-10-28T07:30:10.758476-04:00",
+  "source_commit": "b45fd43a123a804516661295e1760811dc769c5d",
+  "configuration": {
+    "mode": "offline-smoke",
+    "model": null,
+    "judge": null,
+    "model_family": "gpt-4.1",
+    "judge_family": "claude-haiku-4.5",
+    "conditions": [
+      "skill",
+      "baseline",
+      "placebo"
+    ],
+    "fixture_ids": [
+      "f01",
+      "f06"
+    ],
+    "repeats": 1,
+    "max_tokens": 1400,
+    "judge_max_tokens": 1100,
+    "budget_usd": 5,
+    "max_calls": 200,
+    "max_seconds": 900,
+    "max_generated_tokens": 300000,
+    "rates": {
+      "evaluated": [
+        0.4,
+        1.6
+      ],
+      "judge": [
+        1,
+        5
+      ]
+    },
+    "price_basis": "Nominal uncached USD per million input/output tokens, verified official pricing on 2026-10-28; not a provider invoice.",
+    "price_sources": [
+      "https://developers.openai.com/api/docs/pricing",
+      "https://platform.claude.com/docs/en/about-claude/pricing"
+    ],
+    "seed": "20261028 controls order/bootstrap only; provider generation is not seeded",
+    "source_hashes": {
+      "docs/BENCHMARK.md": "bf5534fa11307fe27248ba00b51a66cc1f111d0022818a30c38ed53535db725f",
+      "evals/__init__.py": "8a9ba95a84e2cac231f64f5c312327686081b1a9894c3dcfdcff37afa8fd28e1",
+      "evals/fixtures.json": "c0c9a0cf648b46b7e604b6103e791604de1c324257f7d41ea0cf713d4cd9b977",
+      "evals/key.json": "1c9aecad8d6d1becb24cf1bf32fb5592ce68600ce418b920fefe7ea0aa022931",
+      "evals/make_fixtures.py": "ee8f740547002e8e9d76c2809e04796834dedc4d576c97d1e873ae03cd4a5039",
+      "evals/metrics.py": "d8ca82ba9d94dd804d396970d6d6d5be2e293dd37fdc8a7d50f8e2c4d3c80ce6",
+      "evals/placebo.txt": "88fa5855a56204da55d8b563e26d05c205ca581adb4a2186c8f0c0b153256579",
+      "evals/prompts.py": "6e2fa0458540e079b02dbf3c1144baa021f01e65f80ce776d85bd90d37601166",
+      "evals/providers.py": "978773e8182e252f2fa2b5e0bb1e51516eb5acf9264dfc25f4666f9c9fc4d7e1",
+      "evals/run.py": "6c262c5a4f0ebb434480dd3296c54fd875a36b4c39c9ebde531d6a3d635d9397",
+      "skills/project-handoff/SKILL.md": "be800a4242fe14b5aed5257fe767f77eabf1173613a097a2a4d3499aaaf5c568",
+      "skills/project-handoff/references/handoff-contract.md": "289081447ff1a576f1b4e70e0a86a66721987134357cd64951d328c19b917d02",
+      "skills/project-handoff/references/method.md": "c1b829e12813fc07bf79ddb8e358a59e75e8cc6d28b5cc0840b2ee08b931f14a"
+    },
+    "treatment_hash": "98cb4d902bc4d3446cc063eaaa3190645929d89c159790875bda31ed87ffc3ec",
+    "placebo_hash": "bffcb2b7195dbe3ad43cbeebd36fdae7dfd8258b2dc94a8d710304db87fe5747"
+  },
+  "scope": "Fictional virtual-file capture-to-fresh-resumer study; not a complete host/tool or direct Resume/Check evaluation."
+}

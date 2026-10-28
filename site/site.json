@@ -1,0 +1,62 @@
+{
+  "name": "Project Handoff",
+  "description": "A portable skill for picking up a project without losing its decisions, evidence or next safe action. No Memory service required.",
+  "tagline": "Pick up where the work left off.",
+  "evidence_record": "docs/evaluations/2026-10-28/study-1/summary.json",
+  "examples": [
+    {
+      "id": "decision",
+      "name": "A newer note is not a new decision",
+      "brief": "Fictional project: a small offline checklist. Resume the work and name the next safe action. Do not implement anything yet.",
+      "sources": [
+        {"label": "decisions.md · D-03", "text": "Adopted: keep the first release in plain local files. Reason: people need to work without a network. No later decision revokes this."},
+        {"label": "notes.md · later brainstorm", "text": "Maybe add cloud sync later. This is a suggestion; no decision was made."},
+        {"label": "tests.md · last session", "text": "The remaining check is whether the export opens after a fresh install. It has not been run."}
+      ],
+      "original": "Cloud sync is approved. Implement the server, then deploy. The export test passed last time.",
+      "checked": "Keep the local-file release: D-03 remains adopted. The newer brainstorm proposes cloud sync but does not approve it. The export check is still unrun. Next safe action: inspect the fresh-install export steps and agree the check; implementation and deployment are outside this resume request.",
+      "kept": "The adopted offline decision and its reason survive the handoff.",
+      "changed": "A suggestion stops being treated as permission; an unrun check stops being reported as a pass.",
+      "question": "What supports changing the adopted release decision?",
+      "choices": ["A newer brainstorm is enough.", "An explicit adopted revision or correction from the decision owner.", "The incoming agent prefers cloud sync."],
+      "answer": 1,
+      "feedback": "An explicit adopted revision would change the decision. The later brainstorm is evidence of an idea, not authority to adopt it."
+    },
+    {
+      "id": "verification",
+      "name": "The command is recorded, not rerun",
+      "brief": "Fictional project: a text formatter. Resume from a handoff after a dependency update. The user asked for a brief, not a repair.",
+      "sources": [
+        {"label": "HANDOFF.md · previous session", "text": "Before the dependency update: python3 -m unittest passed 18 tests."},
+        {"label": "change-log.md · current revision", "text": "The parser dependency changed after those 18 tests ran. No newer test output is available."},
+        {"label": "request.md · current scope", "text": "Tell me what is known and what should be checked next. Do not change files yet."}
+      ],
+      "original": "All 18 tests pass on this revision. Fix any parser errors and rewrite the handoff now.",
+      "checked": "The previous session recorded 18 passing tests before the dependency change. That does not verify the current revision. No current result is available. Next safe action: propose rerunning the same test command against the new dependency. This brief makes no file changes and claims no new test run.",
+      "kept": "The useful prior result stays attached to the revision it actually checked.",
+      "changed": "Current verification remains unknown, and the response stops at the requested brief.",
+      "question": "What can the incoming agent honestly report?",
+      "choices": ["The current revision passes 18 tests.", "The tests failed after the dependency change.", "The earlier revision passed; the current revision is not yet verified."],
+      "answer": 2,
+      "feedback": "Keep the previous result with its revision. Neither a current pass nor a current failure is supported."
+    },
+    {
+      "id": "leave-alone",
+      "name": "A sound handoff can stay as it is",
+      "brief": "Fictional project: a local inventory utility. Check the existing handoff for a useful correction. The supplied sources agree.",
+      "sources": [
+        {"label": "HANDOFF.md · current", "text": "The CSV import is complete at revision f3a19c2. Decision D-02 retains the original file on invalid rows. The next task is a keyboard check of the error summary. No release is authorized."},
+        {"label": "decisions.md · D-02", "text": "Adopted: preserve the input file on every failed import so the user can recover."},
+        {"label": "checks.md · current", "text": "The import checks pass at f3a19c2. The keyboard check remains open. No conflicting result is supplied."}
+      ],
+      "original": "The CSV import is complete at revision f3a19c2. Decision D-02 retains the original file on invalid rows. The next task is a keyboard check of the error summary. No release is authorized.",
+      "checked": "Leave this handoff unchanged. The supplied checks support its revision and status, D-02 is preserved, and the next task and release boundary are clear. No useful correction is supported. This is a source check, not a new test run.",
+      "kept": "The entire existing handoff stays intact.",
+      "changed": "Nothing. A different writing style is not a reason to rewrite a sound record.",
+      "question": "What is the useful move here?",
+      "choices": ["Rewrite it into the skill's favorite headings.", "Leave it alone and explain what was checked.", "Treat the clear next task as permission to release."],
+      "answer": 1,
+      "feedback": "Leave the handoff alone. Its useful content is supported, and a check request does not authorize the next task or a release."
+    }
+  ]
+}

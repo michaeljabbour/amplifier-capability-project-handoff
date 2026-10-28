@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "id": "project-handoff",
+  "display_name": "Project Handoff",
+  "kind": "skill",
+  "promise": "Pick up where the work left off.",
+  "audience": "People returning to a project or transferring it to another collaborator.",
+  "trigger": "Capture a handoff, resume from its evidence, or check what changed.",
+  "skill_path": "skills/project-handoff",
+  "install_commands": [
+    "python3 scripts/install.py --dest /path/to/host/skills"
+  ],
+  "runtime_install_commands": [],
+  "modes": [],
+  "examples": [],
+  "boundaries": [
+    "The existing canonical method and native interfaces remain the source of truth.",
+    "Publication, source inspection, component tests and outside-user benefit are separate claims."
+  ],
+  "evidence_summary": "The dated 60-trial study established no advantage over baseline. Invalid and disputed judgments remain preserved; real-user outcomes are unmeasured.",
+  "verification": [],
+  "sources": [
+    {
+      "repo": "amplifier-skill-project-handoff",
+      "commit": "1724644d8562eb15a778df8565e5cfec2afcb61d",
+      "role": "Existing implementation and retained history",
+      "license": "MIT"
+    }
+  ],
+  "consolidation": [
+    {
+      "repo": "project-context",
+      "paths": [
+        "templates/HANDOFF.md",
+        "templates/PROVENANCE.md",
+        "templates/PROJECT_CONTEXT.md"
+      ],
+      "destination": "amplifier-skill-project-handoff/skills/project-handoff/references (adapt principles, not automatic file copies)",
+      "role": "Continuity and decision-history ideas",
+      "action": "extract lightweight method",
+      "why": "The new product should use one sufficient record and preserve existing conventions rather than create nine mandatory files.",
+      "interface": "project-handoff/v1 plain record; explicit adopted/proposed decision status",
+      "evidence": [
+        "https://github.com/michaeljabbour/project-context/blob/a156b0e722cfef4ce3294f2ae043ecc533256474/templates/HANDOFF.md",
+        "https://github.com/michaeljabbour/project-context/blob/a156b0e722cfef4ce3294f2ae043ecc533256474/templates/PROVENANCE.md",
+        "https://github.com/michaeljabbour/project-context/blob/a156b0e722cfef4ce3294f2ae043ecc533256474/templates/PROJECT_CONTEXT.md"
+      ],
+      "source_paths": [
+        {
+          "path": "templates/HANDOFF.md",
+          "url": "https://github.com/michaeljabbour/project-context/blob/a156b0e722cfef4ce3294f2ae043ecc533256474/templates/HANDOFF.md"
+        },
+        {
+          "path": "templates/PROVENANCE.md",
+          "url": "https://github.com/michaeljabbour/project-context/blob/a156b0e722cfef4ce3294f2ae043ecc533256474/templates/PROVENANCE.md"
+        },
+        {
+          "path": "templates/PROJECT_CONTEXT.md",
+          "url": "https://github.com/michaeljabbour/project-context/blob/a156b0e722cfef4ce3294f2ae043ecc533256474/templates/PROJECT_CONTEXT.md"
+        }
+      ]
+    },
+    {
+      "repo": "project-context",
+      "paths": [
+        "templates/AGENTS.md",
+        "templates/GLOSSARY.md",
+        "templates/STRUCTURE.md",
+        "templates/WAYSOFWORKING.md",
+        "templates/EXPERIMENT_JOURNAL.md",
+        "templates/CLAIMS_TRACKER.md"
+      ],
+      "destination": "project-context/templates (retain independently usable optional templates)",
+      "role": "Broader coordination/research templates",
+      "action": "retain as optional reference assets",
+      "why": "These serve additional jobs; moving them all into the small handoff install would increase its promise and burden.",
+      "interface": "Optional links from a handoff, no required store or automatic AGENTS overwrite",
+      "evidence": [
+        "https://github.com/michaeljabbour/project-context/blob/a156b0e722cfef4ce3294f2ae043ecc533256474/templates/AGENTS.md",
+        "https://github.com/michaeljabbour/project-context/blob/a156b0e722cfef4ce3294f2ae043ecc533256474/templates/GLOSSARY.md",
+        "https://github.com/michaeljabbour/project-context/blob/a156b0e722cfef4ce3294f2ae043ecc533256474/templates/STRUCTURE.md",
+        "https://github.com/michaeljabbour/project-context/blob/a156b0e722cfef4ce3294f2ae043ecc533256474/templates/WAYSOFWORKING.md",
+        "https://github.com/michaeljabbour/project-context/blob/a156b0e722cfef4ce3294f2ae043ecc533256474/templates/EXPERIMENT_JOURNAL.md",
+        "https://github.com/michaeljabbour/project-context/blob/a156b0e722cfef4ce3294f2ae043ecc533256474/templates/CLAIMS_TRACKER.md"
+      ],
+      "source_paths": [
+        {
+          "path": "templates/AGENTS.md",
+          "url": "https://github.com/michaeljabbour/project-context/blob/a156b0e722cfef4ce3294f2ae043ecc533256474/templates/AGENTS.md"
+        },
+        {
+          "path": "templates/GLOSSARY.md",
+          "url": "https://github.com/michaeljabbour/project-context/blob/a156b0e722cfef4ce3294f2ae043ecc533256474/templates/GLOSSARY.md"
+        },
+        {
+          "path": "templates/STRUCTURE.md",
+          "url": "https://github.com/michaeljabbour/project-context/blob/a156b0e722cfef4ce3294f2ae043ecc533256474/templates/STRUCTURE.md"
+        },
+        {
+          "path": "templates/WAYSOFWORKING.md",
+          "url": "https://github.com/michaeljabbour/project-context/blob/a156b0e722cfef4ce3294f2ae043ecc533256474/templates/WAYSOFWORKING.md"
+        },
+        {
+          "path": "templates/EXPERIMENT_JOURNAL.md",
+          "url": "https://github.com/michaeljabbour/project-context/blob/a156b0e722cfef4ce3294f2ae043ecc533256474/templates/EXPERIMENT_JOURNAL.md"
+        },
+        {
+          "path": "templates/CLAIMS_TRACKER.md",
+          "url": "https://github.com/michaeljabbour/project-context/blob/a156b0e722cfef4ce3294f2ae043ecc533256474/templates/CLAIMS_TRACKER.md"
+        }
+      ]
+    }
+  ],
+  "docs": [
+    "docs/INSTALL.md",
+    "docs/CONSOLIDATION.md"
+  ],
+  "publication_status": "Installation and evidence scopes are documented below.",
+  "site_builder": "native"
+}

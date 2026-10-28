@@ -1,0 +1,30 @@
+{
+  "kind": "live Right Shape application check",
+  "phase": "design",
+  "date": "2026-10-28T07:35:21.806993-04:00",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "provider": "openai",
+  "structured": true,
+  "source_hashes": {
+    "docs/DESIGN.md": "8218abe23b2997f696ab8a97118ef4644437f477cd4ce3fe3114f52dd0aa1d64",
+    "project.json": "9ce7df82385a4a2775c235135356ce0ede5cb560126265120d291fa01d7e539a",
+    "README.md": "5a0c8b95fef0743f80006574fb8a183c153bbe8b406640ad234b1cf2c102c2d4",
+    "skills/project-handoff/SKILL.md": "be800a4242fe14b5aed5257fe767f77eabf1173613a097a2a4d3499aaaf5c568",
+    "skills/project-handoff/references/method.md": "c1b829e12813fc07bf79ddb8e358a59e75e8cc6d28b5cc0840b2ee08b931f14a",
+    "skills/project-handoff/references/handoff-contract.md": "289081447ff1a576f1b4e70e0a86a66721987134357cd64951d328c19b917d02",
+    "scripts/install.py": "3656a62103f08bd194b051e4e1b20c3927722b0955e5a1638b2fba229388a01c",
+    "bundle.md": "39f5a10cbfd482066bcc06ee7b069115921f09d8cbc9e3cd02fadd81dbbe9011",
+    "behaviors/project-handoff.yaml": "00b326e48a1e389dcb555c6527823b2017bf0cc9ad861a2df8a14b5935afbf8d",
+    "modes/handoff.md": "98630b9b70e374cdb8bbd060c5ff7bca48ddfd05e08ebbe2b9a6f7f0dba3a5eb",
+    "recipes/project-handoff-capture.yaml": "e3f51506eaab32888f0f533ad01048cd1cbfd4fd7531b9e066cca70749db250f",
+    "docs/BENCHMARK.md": "bf5534fa11307fe27248ba00b51a66cc1f111d0022818a30c38ed53535db725f"
+  },
+  "right_shape_sha256": "74a00f0789554bcbf4df4016b75aff480e69b4b414a25b249a0b89625d842a18",
+  "rubric_sha256": "df212a107a7b22da618048695e3ae41486e55ba5fe89726bcf86af1150143cda",
+  "cases": [
+    "actual-design",
+    "unsafe-variant"
+  ],
+  "completed": 2,
+  "claims_limit": "No baseline/placebo comparison or causal efficacy claim for Right Shape; no real-user outcome evidence."
+}

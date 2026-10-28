@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="@@DESCRIPTION@@">
+  <meta name="theme-color" content="#f6f4ee">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Project Handoff | An Amplifier skill</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/family.css">
+  <link rel="stylesheet" href="./assets/style.css">
+  <script src="./assets/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="attribution"><div class="wrap"><span>A small handoff. A useful next session.</span><span>Plain files. Your decisions. No service required.</span></div></div>
+<header class="masthead"><div class="wrap">
+  <a class="brand" href="#main" aria-label="Project Handoff home"><span class="brand-mark" aria-hidden="true"></span><span><b>Amplifier</b><small>Skills for thoughtful work</small></span></a>
+  <nav class="nav" aria-label="Main navigation"><a href="#explore">See it work</a><a href="#method">Method</a><a href="#benchmark">The bar</a><a class="nav-use" href="#use-skill">Use the skill</a></nav>
+</div></header>
+<main id="main" class="wrap">
+  <section class="hero handoff-hero" aria-labelledby="hero-title"><div class="hero-grid">
+    <div><h1 id="hero-title">Project<br>Handoff</h1><p class="promise">Pick up where<br>the work left off.</p></div>
+    <div class="hero-intro"><p class="lede">The next session should inherit the work, not repeat the briefing.</p><p>Project Handoff helps your agent leave a small, useful record, check what still holds, and resume with one safe next action. Settled decisions keep their reasons. Unknowns stay visible.</p><p>It works with the project files you already have. No Memory install, account, database or background process.</p><div class="actions"><a class="button primary" href="#explore">Read a handoff</a><a class="text-link" href="#use-skill">Get the skill</a></div><p class="note hero-note">A portable skill, with an optional Amplifier surface. It does not remember anything you have not saved.</p></div>
+  </div></section>
+
+  <section id="explore" class="comparison-section" aria-labelledby="explore-title">
+    <div class="section-heading"><div><p class="eyebrow">One brief, the same evidence</p><h2 id="explore-title">Carry the work.<br>Check the story.</h2></div><p>A handoff can sound certain while quietly changing a decision or inventing a test result. These fictional examples show what a fresh agent should preserve, question or leave alone.</p></div>
+    <div class="example-controls"><label for="example-select">Choose a fictional project</label><select id="example-select" aria-controls="example-panels">@@EXAMPLE_OPTIONS@@</select></div>
+    <div id="example-panels">@@EXAMPLE_PANELS@@</div>
+    <p class="note example-note">These are authored, fictional walkthroughs. The answer check runs in this browser; it is not an AI evaluation or evidence of real-user benefit.</p>
+    <noscript><p class="note">The first example is shown. The <a href="./docs/EXAMPLES.md">text examples</a> and all source documents remain readable without JavaScript.</p></noscript>
+  </section>
+
+  <section id="method" class="section" aria-labelledby="method-title">
+    <div class="section-heading"><div><p class="eyebrow">One portable method</p><h2 id="method-title">Leave a record.<br>Keep its meaning.</h2></div><p>Capture a handoff, resume from one, or check it for a useful correction. The method below is built directly from the installed skill. It keeps its source in one place.</p></div>
+    <div class="boundary-band"><h3>Resuming is not permission to act.</h3><p>The result is a brief or a reviewable handoff. Building, overwriting, sending or releasing still needs to be within your request.</p></div>
+    <div class="source-method">@@METHOD@@</div>
+    <details class="source-contract"><summary>Read the plain-file handoff contract</summary><div class="rendered-source">@@CONTRACT@@</div></details>
+  </section>
+
+  <section id="use-skill" class="section use-section" aria-labelledby="use-title">
+    <div class="section-heading"><div><p class="eyebrow">Works with the files you have</p><h2 id="use-title">One folder.<br>No Memory install.</h2></div><p>Give the skill to a host that can read your project files, then ask for the job you need. Keep the reference folder beside the skill. Nothing runs continuously.</p></div>
+    <div class="use-grid">
+      <div class="prompt-box"><div class="prompt-top"><span>A prompt to start with</span><button class="copy-button" data-copy="start-prompt" type="button">Copy prompt</button></div><pre id="start-prompt">Use Project Handoff to resume this project from its existing records. Tell me what still holds, what is uncertain, and the next safe action. Do not change files or start the next task.</pre><p id="copy-status" class="copy-status" role="status" aria-live="polite"></p></div>
+      <div class="skill-download"><h3>Take the whole skill.</h3><p>The ZIP contains one skill and its references. It is independent of Memory and the optional Amplifier integration.</p><div class="actions"><a class="button primary" href="./downloads/project-handoff-skill.zip" download>Download the skill ZIP</a><a class="text-link" href="./downloads/project-handoff-skill.md" download>Read the skill source</a></div><p class="note">Extract the <code>project-handoff</code> folder into your host's skills directory. Use your host's documented location, or read the <a href="./README.md">local install guide</a>.</p><details class="install-detail"><summary>Installing from a local checkout</summary><pre><code>python3 scripts/install.py --dest ~/.agents/skills
+python3 scripts/install.py --dest ~/.agents/skills --check</code></pre><p class="note">Use a destination your host reads. The check verifies the installed files; it does not test the host's behavior.</p></details><div class="compact-links"><a href="./downloads/references/handoff-contract.md">Handoff contract</a><a href="./docs/EXAMPLES.md">Text examples</a><a href="./docs/PROVENANCE.md">Provenance</a></div></div>
+    </div>
+    <details class="skill-source"><summary>Read the exact installed skill</summary><label for="skill-source">Canonical skill source</label><textarea id="skill-source" readonly spellcheck="false">@@SKILL_SOURCE@@</textarea><p class="note">The source matches the ZIP byte for byte. The reference files travel with it.</p></details>
+  </section>
+
+  <section id="benchmark" class="section" aria-labelledby="benchmark-title">
+    <div class="section-heading"><div><p class="eyebrow">A benchmark that can fail</p><h2 id="benchmark-title">Does the next<br>agent resume well?</h2></div><p>A longer handoff is not the target. The test asks whether a fresh agent keeps the right decision, handles stale evidence and stops at the agreed boundary.</p></div>
+    <div class="evidence-status" role="note">@@EVIDENCE_STATUS@@</div>
+    <div class="benchmark-source">@@BENCHMARK@@</div>
+    <details class="source-contract"><summary>Read the complete benchmark plan</summary><div class="rendered-source">@@BENCHMARK_FULL@@</div></details>
+    <p class="note">Real people resuming real work: not measured. A fictional task result does not establish time saved, adoption or persistent human learning.</p>
+  </section>
+</main>
+<footer class="footer"><div class="wrap"><div class="footer-top"><p>Project Handoff</p><nav class="nav" aria-label="Related skills"><a href="https://michaeljabbour.github.io/amplifier-skill-right-shape/">Right Shape</a><a href="https://michaeljabbour.github.io/amplifier-skill-worth-using/">Worth Using</a><a href="https://michaeljabbour.github.io/amplifier-skill-taste/">Taste × Elegance</a></nav></div><div class="footer-bottom"><span>A portable skill for thoughtful work. No affiliation or endorsement implied.</span><span><a href="./LICENSE">MIT</a> · <a href="./theme/LICENSE">Family theme notice</a> · <a href="#main">Back to top</a></span></div></div></footer>
+</body>
+</html>

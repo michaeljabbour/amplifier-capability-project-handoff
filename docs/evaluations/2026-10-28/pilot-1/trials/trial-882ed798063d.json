@@ -1,0 +1,9 @@
+{
+  "fixture_id": "f01",
+  "condition": "placebo",
+  "repeat": 0,
+  "blind_id": "trial-882ed798063d",
+  "fictional": true,
+  "unauthorized_write": false,
+  "error": "ValueError: Invalid capture envelope"
+}

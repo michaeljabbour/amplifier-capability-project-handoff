@@ -1,0 +1,21 @@
+[
+  {
+    "case": "built-package",
+    "cost_upper_bound_usd": 0.092579,
+    "status": "completed",
+    "text": "Verdict: The Project Handoff skill fails the Check contract due to missing a meaningful benchmark with planted traps and leave-alone cases, and lacks independent installation evidence beyond local build; replaceability is mostly met but no Memory or service dependencies are allowed.\n\nGaps in order of leverage:\n\n1. **Benchmark gaps:**  \n   - No dated run of the benchmark with planted traps, leave-alone cases, stopping and consistency tests is supplied. The docs/BENCHMARK.md is a frozen protocol, not a result.  \n   - The validation report states no real-user outcomes or behavioral results yet; automatic judge results show no effectiveness conclusion.  \n   - No L1 or higher level evaluation artifacts exist to prove the skill works as promised.\n\n2. **Installation gaps:**  \n   - Installation is local only; no public repository or global install path is claimed or demonstrated.  \n   - The installer requires manual copy or local Python script; no canonical packaging or distribution system is shown.  \n   - No evidence of independent installation by a stranger or outside user.\n\n3. **Replaceability:**  \n   - R1 contract edges are stable (function interface via SKILL.md and references).  \n   - R2 swappable parts: model and verifier can be replaced; no embedded Memory or service.  \n   - R3 right size: skill is coherent and small.  \n   - R4 identity apart from surface: no Memory or credentials inside the skill.  \n   - R5 sunset test: no evidence of scaffolding removal or eval for dead weight yet.\n\n4. **No Memory or service dependencies:**  \n   - The skill explicitly avoids Memory, database, daemon, or API keys. This is good for replaceability and safety.\n\nProposed removals before additions:\n\n- Remove any implicit claims or expectations of effectiveness until a dated benchmark run with traps and leave-alone cases is published.  \n- Remove any suggestion of global or public installation; keep it local and manual until packaging is formalized.\n\nAdditions to consider only after removals:\n\n- Add a dated, blinded, pre-registered benchmark run with planted traps, leave-alone cases, stopping and consistency tests, and publish results.  \n- Provide evidence of independent installation by a stranger on a clean environment.  \n- Add sunset tests for scaffolding and evals for dead weight removal.\n\nSummary: The skill is well designed for local use without Memory or services and mostly meets replaceability, but it lacks a meaningful benchmark and independent install evidence to pass the Check contract fully. It should not claim effectiveness or global install readiness yet.\n\nNo question; the supplied evidence is sufficient for this verdict.",
+    "model": "gpt-4.1-mini-2025-04-14",
+    "response_id": "resp_000161b8d15a8538016ae1e0f955a087d181fae61e6f2a757f",
+    "input_tokens": 14603,
+    "output_tokens": 526,
+    "seconds": 4.915119249955751,
+    "finish_reason": "completed",
+    "complete": true,
+    "requested_model_match": true,
+    "temperature": 0.2,
+    "max_output_tokens": 5000,
+    "seed": null,
+    "seed_support": "No seed requested; repeat indices are scheduling labels only.",
+    "nominal_uncached_usd": 0.006682800000000001
+  }
+]

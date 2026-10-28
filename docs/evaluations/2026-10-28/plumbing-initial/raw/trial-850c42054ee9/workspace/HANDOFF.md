@@ -1,0 +1,1 @@
+Old plan: switch the reader to a database, then add parser cases.

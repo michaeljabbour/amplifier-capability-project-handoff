@@ -1,0 +1,39 @@
+{
+  "status": "offline-smoke",
+  "scope": "The treatment is loaded by the capture agent only. A fresh, neutral resumer sees the resulting handoff and retained project files, not history or method. No real model tools execute.",
+  "models": {
+    "evaluated": null,
+    "judge": null,
+    "family_declarations": [
+      "gpt-4.1",
+      "claude-haiku-4.5"
+    ]
+  },
+  "fixture_count": 2,
+  "repeats": 1,
+  "conditions": [
+    "skill",
+    "baseline",
+    "placebo"
+  ],
+  "completed_trials": 6,
+  "failed_trials": 0,
+  "metrics_by_condition": null,
+  "paired_comparisons": null,
+  "consistency": null,
+  "nominal_uncached_usd": null,
+  "unpriced_failed_calls": 0,
+  "budget_accounted_usd": null,
+  "provider_calls": 0,
+  "limitations": [
+    "Curated fictional cases; no real-user time saving, adoption or durable memory outcome measured.",
+    "Only Capture-to-neutral-resumer transfer is tested; direct Resume and Check method benefit is not established.",
+    "Virtual text/file interface, not actual host tools, permissions or filesystem security.",
+    "Both stages use the same evaluated model in separate stateless calls; judge uses a different declared model family.",
+    "Judge blinding hides condition labels, not stylistic clues; human adjudication remains useful.",
+    "Small clustered bootstrap intervals are descriptive; repeated cases are not independent new projects.",
+    "Snapshot IDs/settings and source hashes are frozen; provider generation is not deterministic.",
+    "Nominal uncached token prices are not an invoice; errors may consume reserved budget without retained provider usage."
+  ],
+  "interpretation": "Offline plumbing only. No model behavior or effectiveness was measured."
+}
