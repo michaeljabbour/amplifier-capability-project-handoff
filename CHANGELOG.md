@@ -22,3 +22,7 @@ This entry describes the local source and recorded checks. It does not claim pub
 ## Capability consolidation — 2026-10-28
 
 - Added a clear installation and ownership record while preserving native interfaces, source history and evidence limits.
+
+## Optional reference preservation — 2026-10-28
+
+- Preserved the complete fourteen-file Project Context snapshot and MIT notice as an optional reference before retiring its separate front door. The four portable skill files and all evaluation records remain unchanged.

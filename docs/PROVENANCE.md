@@ -27,3 +27,7 @@ Family CSS retained under `site/theme/` carries its own MIT notice. Do not remov
 ## Evidence policy
 
 The benchmark plan, test fixtures, offline runner validation, live model output and real-user outcome are separate records. Each dated evaluation must identify its source snapshot, protocol, controls and limits. A later correction creates a new treatment or record rather than changing the old result to make it pass. Failures, null results and unresolved questions remain part of the handoff.
+
+## Retained optional coordination assets — 2026-10-28
+
+The later consolidation preserves the complete fourteen-file Project Context 2.2.0 source snapshot as an optional [coordination reference](OPTIONAL-COORDINATION.md). It does not change the narrower Handoff method or its frozen evaluation treatment.

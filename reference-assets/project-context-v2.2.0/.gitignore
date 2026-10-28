@@ -1,0 +1,12 @@
+# Generated coordination files (project-specific, not part of the template repo)
+# These are created by running the setup prompt against a specific project.
+# They live alongside templates/ but are gitignored because each project's
+# files will be different.
+/PROJECT_CONTEXT.md
+/GLOSSARY.md
+/STRUCTURE.md
+/WAYSOFWORKING.md
+/HANDOFF.md
+/PROVENANCE.md
+/EXPERIMENT_JOURNAL.md
+/CLAIMS_TRACKER.md

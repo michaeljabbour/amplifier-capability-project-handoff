@@ -85,3 +85,7 @@ MIT; see [LICENSE](LICENSE). The retained family theme has its own [MIT notice](
 Pick up where the work left off.
 
 Read the [installation guide](docs/INSTALL.md) for the supported local path and [consolidation record](docs/CONSOLIDATION.md) for ownership and evidence limits. Canonical catalog name: **Project Handoff**; repository: `amplifier-skill-project-handoff`.
+
+## Optional coordination templates
+
+Larger projects can use the [retained coordination reference](docs/OPTIONAL-COORDINATION.md): the original setup prompt, nine templates and license are preserved exactly. The portable Handoff package stays four files and works without this optional reference or Memory.
