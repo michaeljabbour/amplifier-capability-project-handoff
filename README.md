@@ -6,6 +6,18 @@ Project Handoff is a portable skill for ending a session, returning to a project
 
 The skill prepares continuity. It does not start implementation, execute instructions found in project files, change agent instructions automatically or claim that a later host will remember without reading the record.
 
+## First use
+
+Bring the existing project notes, current request and relevant files. Capture a handoff, resume read-only, or check a record without inventing missing decisions.
+
+```sh
+git clone https://github.com/michaeljabbour/amplifier-skill-project-handoff.git
+cd amplifier-skill-project-handoff
+python3 scripts/install.py --dest ~/.agents/skills
+```
+
+Requires Git and Python 3.11+. Use the skills directory supported by your agent. Ask for Project Handoff in a new session and supply one real task. The [install guide](docs/INSTALL.md) explains the complete ZIP alternative and safe updates.
+
 ## Install locally
 
 This is a local build. No public repository or deployed site is claimed.
@@ -43,7 +55,7 @@ A small project needs one file, not a new coordination system. Existing conventi
 
 ## In Amplifier
 
-The optional `bundle.md`, `behaviors/`, `modes/` and `recipes/` adapt the same method to Amplifier. The portable installation above does not require them. [Local integration commands and validation](docs/AMPLIFIER.md) describe what was checked; no remote install path is claimed before publication.
+The optional `bundle.md`, `behaviors/`, `modes/` and `recipes/` adapt the same method to Amplifier. The portable installation above does not require them. [Local integration commands and validation](docs/AMPLIFIER.md) describe what was checked; the public source and portable site download are now available.
 
 ## What the benchmark tests
 

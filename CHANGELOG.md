@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-28 — Public first use
+
+- Add a complete public clone/install path beside the first useful outcome, with prerequisites, safe updates and a full-folder ZIP alternative. Preserve the existing method, films and interactive examples.
+
+
 ## 0.1.0 — 2026-10-28
 
 - Introduced the independently installable Project Handoff skill with Capture, Resume and Check modes.
