@@ -2,6 +2,8 @@
 
 Pick up a project without repeating the briefing or losing a settled decision.
 
+Watch the [70-second film](https://michaeljabbour.github.io/amplifier-skill-project-handoff/#film): an eager AI session that forgets everything overnight, and the note that lets it pick up where the work left off. The session and project in it are fictional.
+
 Project Handoff is a portable skill for ending a session, returning to a project or checking whether a handoff is still accurate. It keeps the decisions and their reasons, evidence and verification limits, unresolved conflicts and one next safe action in ordinary project files. A later session can read those files without a Memory service, database, daemon, native build or provider key.
 
 The skill prepares continuity. It does not start implementation, execute instructions found in project files, change agent instructions automatically or claim that a later host will remember without reading the record.

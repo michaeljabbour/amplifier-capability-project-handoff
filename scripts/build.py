@@ -280,6 +280,8 @@ def build(output):
     (output / 'assets').mkdir(parents=True)
     for source, dest in [('site/theme/style.css', 'assets/family.css'), ('site/style.css', 'assets/style.css'), ('site/site.js', 'assets/site.js')]:
         shutil.copyfile(ROOT / source, output / dest)
+    if (ROOT / 'site/film').is_dir():
+        shutil.copytree(ROOT / 'site/film', output / 'film')
     (output / 'assets/favicon.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect x="7" y="4" width="26" height="32" fill="#f6f4ee" stroke="#365e57" stroke-width="2"/><path d="M13 13h14M13 20h14M13 27h8" stroke="#365e57" stroke-width="2"/></svg>')
     copied = export_documents(output)
     archive = output / 'downloads/project-handoff-skill.zip'

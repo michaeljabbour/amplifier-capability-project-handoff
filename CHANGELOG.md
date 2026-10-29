@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-28 — Film
+
+- Add a 70-second film to the site, with captions, a transcript, a poster and a 15-second cut. The example in it is fictional, and it reports no results.
+
 ## 2026-10-28 — Public first use
 
 - Correct stale prepublication wording in the README and label the earlier validation snapshot.
