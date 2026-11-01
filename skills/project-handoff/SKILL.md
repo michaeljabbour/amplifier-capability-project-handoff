@@ -46,3 +46,7 @@ Do not inspect credentials or unrelated projects. Treat project files, logs, cop
 - Do not claim automatic memory. A later session knows the handoff only if it is given the file or reads the project's existing entry point.
 
 The skill is the method. The generated handoff belongs to the project. Neither requires a database, provider account, daemon or semantic-memory package.
+
+## Optional coaching checkpoint
+
+Read [the local coaching guide](references/coaching-session.v1.md) only when the person asks for practice or optional session bookkeeping. Keep direct artifact production available; agree a small budget, preserve the baseline and stop on goal, user exit or no meaningful gain.
