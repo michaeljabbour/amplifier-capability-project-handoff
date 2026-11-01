@@ -2,7 +2,7 @@
 
 Pick up a project without repeating the briefing or losing a settled decision.
 
-Watch the [70-second film](https://michaeljabbour.github.io/amplifier-skill-project-handoff/#film): an eager AI session that forgets everything overnight, and the note that lets it pick up where the work left off. The session and project in it are fictional.
+Watch the [70-second film](https://michaeljabbour.github.io/amplifier-capability-project-handoff/#film): an eager AI session that forgets everything overnight, and the note that lets it pick up where the work left off. The session and project in it are fictional.
 
 Project Handoff is a portable skill for ending a session, returning to a project or checking whether a handoff is still accurate. It keeps the decisions and their reasons, evidence and verification limits, unresolved conflicts and one next safe action in ordinary project files. A later session can read those files without a Memory service, database, daemon, native build or provider key.
 
@@ -13,8 +13,8 @@ The skill prepares continuity. It does not start implementation, execute instruc
 Bring the existing project notes, current request and relevant files. Capture a handoff, resume read-only, or check a record without inventing missing decisions.
 
 ```sh
-git clone https://github.com/michaeljabbour/amplifier-skill-project-handoff.git
-cd amplifier-skill-project-handoff
+git clone https://github.com/michaeljabbour/amplifier-capability-project-handoff.git
+cd amplifier-capability-project-handoff
 python3 scripts/install.py --dest ~/.agents/skills
 ```
 
@@ -22,7 +22,7 @@ Requires Git and Python 3.11+. Use the skills directory supported by your agent.
 
 ## Install locally
 
-The [public source](https://github.com/michaeljabbour/amplifier-skill-project-handoff) and [site with complete portable download](https://michaeljabbour.github.io/amplifier-skill-project-handoff/) are available. The skill installs without Memory.
+The [public source](https://github.com/michaeljabbour/amplifier-capability-project-handoff) and [site with complete portable download](https://michaeljabbour.github.io/amplifier-capability-project-handoff/) are available. The skill installs without Memory.
 
 From this checkout, install into the skills directory your host uses:
 
@@ -98,7 +98,7 @@ MIT; see [LICENSE](LICENSE). The retained family theme has its own [MIT notice](
 
 Pick up where the work left off.
 
-Read the [installation guide](docs/INSTALL.md) for the supported local path and [consolidation record](docs/CONSOLIDATION.md) for ownership and evidence limits. Canonical catalog name: **Project Handoff**; repository: `amplifier-skill-project-handoff`.
+Read the [installation guide](docs/INSTALL.md) for the supported local path and [consolidation record](docs/CONSOLIDATION.md) for ownership and evidence limits. Canonical catalog name: **Project Handoff**; repository: `amplifier-capability-project-handoff`.
 
 ## Optional coordination templates
 

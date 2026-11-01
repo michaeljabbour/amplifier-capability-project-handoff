@@ -7,8 +7,8 @@ Bring the existing project notes, current request and relevant files. Capture a 
 Use Git and Python 3.11 or later. These commands install the complete method into a skills-parent directory:
 
 ```sh
-git clone https://github.com/michaeljabbour/amplifier-skill-project-handoff.git
-cd amplifier-skill-project-handoff
+git clone https://github.com/michaeljabbour/amplifier-capability-project-handoff.git
+cd amplifier-capability-project-handoff
 python3 scripts/install.py --dest ~/.agents/skills
 ```
 
@@ -18,7 +18,7 @@ The installer refuses conflicting files. Keep your changes before deliberately r
 
 ## Without a checkout
 
-Download the complete ZIP from [the public site](https://michaeljabbour.github.io/amplifier-skill-project-handoff/#use-skill), extract it and place the whole skill folder in your host’s skills directory. Keep all references, helpers and license files together. The single SKILL.md download is for reading; use the whole folder to install.
+Download the complete ZIP from [the public site](https://michaeljabbour.github.io/amplifier-capability-project-handoff/#use-skill), extract it and place the whole skill folder in your host’s skills directory. Keep all references, helpers and license files together. The single SKILL.md download is for reading; use the whole folder to install.
 
 ## What to expect
 
