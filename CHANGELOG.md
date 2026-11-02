@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased — evaluation numeric limits
+
+- Refuse non-finite or invalid money, time, call, token and price limits before creating a live/offline run record. Resumed malformed spend records stop rather than silently disabling the budget.
+- Retain valid observed spending, including over-budget observations, and preserve invalid provider usage in its raw receipt without converting it into negative or boolean token accounting. No model runs or effectiveness gains are claimed.
+
 ## Unreleased — optional coaching checkpoint
 
 - Add a self-contained opt-in practice/review guide with a fictional task, preserved baseline, explicit scope/budget, user stop, reviewed keep/revert and private-by-choice records. Keep native operations, existing method budgets and evidence rules unchanged; no human efficacy or outside-use result is claimed.

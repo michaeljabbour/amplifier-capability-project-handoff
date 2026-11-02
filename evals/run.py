@@ -7,6 +7,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import random
@@ -92,13 +93,56 @@ class BudgetExceeded(RuntimeError):
     pass
 
 
+def _finite_amount(name, value, *, positive=False):
+    try:
+        valid = type(value) in (int, float) and math.isfinite(value)
+    except (OverflowError, TypeError):
+        valid = False
+    if not valid or (value <= 0 if positive else value < 0):
+        raise ValueError(name + ' must be a finite ' + ('positive' if positive else 'nonnegative') + ' number')
+
+
+def validate_budget_limits(config):
+    """Invalid limits are not an unlimited budget; refuse before any record/call."""
+    _finite_amount('budget_usd', config.get('budget_usd'), positive=True)
+    _finite_amount('max_seconds', config.get('max_seconds'), positive=True)
+    for name in ('max_calls', 'max_generated_tokens', 'max_tokens', 'judge_max_tokens'):
+        if type(config.get(name)) is not int or config[name] <= 0:
+            raise ValueError(name + ' must be a positive integer')
+    rates = config.get('rates')
+    if not isinstance(rates, dict):
+        raise ValueError('rates must contain evaluated and judge price pairs')
+    for role in ('evaluated', 'judge'):
+        pair = rates.get(role)
+        if not isinstance(pair, (list, tuple)) or len(pair) != 2:
+            raise ValueError(role + ' rates must be an input/output pair')
+        for value in pair:
+            _finite_amount(role + ' rate', value)
+
+
 class Budget:
     def __init__(self, config, existing=()):
+        validate_budget_limits(config)
+        spent = 0
+        consumed_tokens = 0
+        for receipt in existing:
+            if not isinstance(receipt, dict):
+                raise ValueError('Existing call receipt must be an object')
+            amount = receipt.get('nominal_usd')
+            amount = receipt.get('reserved_usd') if amount is None else amount
+            _finite_amount('existing accounted spend', amount)
+            result = receipt.get('result')
+            output_tokens = result.get('output_tokens') if isinstance(result, dict) else None
+            tokens = output_tokens if output_tokens is not None else receipt.get('max_tokens')
+            if type(tokens) is not int or tokens < 0:
+                raise ValueError('Existing call token accounting must be a nonnegative integer')
+            spent += amount
+            consumed_tokens += tokens
         self.config, self.lock = config, threading.Lock()
         self.started = time.monotonic()
         self.calls = len(existing)
-        self.spent = sum(x.get('nominal_usd') if x.get('nominal_usd') is not None else x.get('reserved_usd', 0) for x in existing)
-        self.tokens = sum(x.get('result', {}).get('output_tokens') if isinstance(x.get('result', {}).get('output_tokens'),int) else x.get('max_tokens',0) for x in existing)
+        self.spent = spent
+        self.tokens = consumed_tokens
 
     def invoke(self, role, system, user, path, response_schema=None):
         cfg = self.config
@@ -126,10 +170,10 @@ class Budget:
                   'reserved_usd':reserve,'nominal_usd':None}
         try:
             result = call(provider, model, system, user, max_tokens, timeout=max(1,min(60,remaining)),response_schema=response_schema)
-            if not isinstance(result['input_tokens'],int) or not isinstance(result['output_tokens'],int):
+            if any(type(result.get(name)) is not int or result[name] < 0 for name in ('input_tokens', 'output_tokens')):
                 record['result']=result
                 dump(path,record)
-                raise ProviderError('Provider response lacks usage')
+                raise ProviderError('Provider response lacks valid nonnegative integer usage')
             actual = (result['input_tokens']*rates[0]+result['output_tokens']*rates[1])/1e6
             record.update(result=result, nominal_usd=actual)
             with self.lock:
@@ -287,6 +331,10 @@ def main(argv=None):
               'seed':'20261028 controls order/bootstrap only; provider generation is not seeded',
               'source_commit':commit,'source_hashes':sources(),'treatment_hash':digest(skill),'placebo_hash':digest(placebo),
               'placebo_control':control.metadata}
+    try:
+        validate_budget_limits(config)
+    except ValueError as error:
+        parser.error(str(error))
     if selected_mode != 'offline-smoke':
         verify_live_inputs(config, skill)
     identity = digest(json.dumps(config,sort_keys=True))
