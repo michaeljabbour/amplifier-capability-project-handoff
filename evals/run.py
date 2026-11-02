@@ -24,6 +24,8 @@ from metrics import (CRITERIA, consistency, paired_difference, parse_json, score
                      summarize, validate_capture, validate_evidence, validate_judgment, validate_resume)
 from prompts import CAPTURE_SCHEMA, RESUME_SCHEMA, JUDGE_SCHEMA, JUDGE_SYSTEM, NEUTRAL, capture_prompt, judge_prompt, participant_evidence, resume_prompt
 from providers import ProviderError, call
+from control_selection import (ControlError, committed_source_errors, freeze_control,
+                               read_frozen_control, select_current_control)
 
 CONDITIONS = ('skill', 'baseline', 'placebo')
 
@@ -47,21 +49,14 @@ def treatment():
 
 
 def placebo_for(skill):
-    pool = (HERE / 'placebo.txt').read_text()
-    words = len(skill.split())
-    if len(pool.split()) < words:
-        raise ValueError('Generic placebo corpus is shorter than the treatment')
-    selected = ' '.join(pool.split()[:words])
-    if '.' in selected:
-        selected = selected.rsplit('.', 1)[0] + '.'
-    if abs(len(selected.split()) - words) / words > .05:
-        raise ValueError('Placebo length must be within five percent')
-    return selected
+    """Choose the declared control version for this exact treatment."""
+    return select_current_control(ROOT, skill).text
 
 
 def sources():
     paths = list((ROOT / 'skills/project-handoff').rglob('*.md'))
     paths += list(HERE.glob('*.py')) + [HERE/'fixtures.json', HERE/'key.json', HERE/'placebo.txt', ROOT/'docs/BENCHMARK.md']
+    paths += [p for p in (HERE/'controls').rglob('*') if p.is_file()]
     return {str(p.relative_to(ROOT)): digest(p.read_bytes()) for p in sorted(paths)}
 
 
@@ -78,8 +73,19 @@ def validate():
     f = dict(fs[0], session=[marker])
     assert marker not in resume_prompt(f, 'A handoff')
     text = treatment()
-    placebo = placebo_for(text)
-    return fs, key, text, placebo
+    control = select_current_control(ROOT, text)
+    return fs, key, text, control
+
+
+def verify_live_inputs(config, selected_treatment):
+    """Stop before transport if current selected inputs drift or lack commit parity."""
+    if treatment() != selected_treatment:
+        raise ControlError('Treatment changed after control selection; start a fresh record')
+    if select_current_control(ROOT, selected_treatment).metadata != config['placebo_control']:
+        raise ControlError('Neutral-control selection changed; start a fresh record')
+    errors = committed_source_errors(ROOT, config['source_hashes'], config['source_commit'])
+    if errors:
+        raise ControlError('; '.join(errors))
 
 
 class BudgetExceeded(RuntimeError):
@@ -241,9 +247,10 @@ def main(argv=None):
     parser.add_argument('--max-tokens',type=int,default=1400)
     parser.add_argument('--judge-max-tokens',type=int,default=1100)
     args = parser.parse_args(argv)
-    fs,key,skill,placebo = validate()
+    fs,key,skill,control = validate()
+    placebo = control.text
     if args.validate:
-        print(json.dumps({'status':'valid','fixtures':len(fs),'conditions':list(CONDITIONS),'treatment_words':len(skill.split()),'placebo_words':len(placebo.split()),'provider_calls':0}))
+        print(json.dumps({'status':'valid','fixtures':len(fs),'conditions':list(CONDITIONS),'treatment_words':len(skill.split()),'placebo_words':len(placebo.split()),'placebo_control':control.metadata,'provider_calls':0}))
         return 0
     selected_mode = 'offline-smoke' if args.offline_smoke else 'pilot' if args.pilot else 'study'
     if selected_mode!='offline-smoke' and (not args.model or not args.judge):
@@ -266,6 +273,10 @@ def main(argv=None):
         repeats = 1
     else:
         repeats = args.repeats
+    try:
+        commit = subprocess.run(['git','rev-parse','HEAD'],cwd=ROOT,capture_output=True,text=True).stdout.strip() or None
+    except OSError:
+        commit = None
     config = {'mode':selected_mode,'model':args.model,'judge':args.judge,'model_family':args.model_family,'judge_family':judge_family,
               'conditions':list(CONDITIONS),'fixture_ids':[f['id'] for f in fs],'repeats':repeats,
               'max_tokens':args.max_tokens,'judge_max_tokens':args.judge_max_tokens,'budget_usd':args.budget_usd,
@@ -274,7 +285,10 @@ def main(argv=None):
               'price_basis':'Nominal uncached USD per million input/output tokens, verified official pricing on 2026-10-28; not a provider invoice.',
               'price_sources':['https://developers.openai.com/api/docs/pricing','https://platform.claude.com/docs/en/about-claude/pricing'],
               'seed':'20261028 controls order/bootstrap only; provider generation is not seeded',
-              'source_hashes':sources(),'treatment_hash':digest(skill),'placebo_hash':digest(placebo)}
+              'source_commit':commit,'source_hashes':sources(),'treatment_hash':digest(skill),'placebo_hash':digest(placebo),
+              'placebo_control':control.metadata}
+    if selected_mode != 'offline-smoke':
+        verify_live_inputs(config, skill)
     identity = digest(json.dumps(config,sort_keys=True))
     record = args.output_root/args.date/run_id
     if record.exists():
@@ -285,21 +299,19 @@ def main(argv=None):
             parser.error('Source/configuration changed; resume refused')
     else:
         record.mkdir(parents=True)
-        try:
-            commit = subprocess.run(['git','rev-parse','HEAD'],cwd=ROOT,capture_output=True,text=True).stdout.strip() or None
-        except OSError:
-            commit = None
         manifest = {'schema_version':'1','identity':identity,'created_at':datetime.now(ZoneInfo('America/New_York')).isoformat(),
                     'source_commit':commit,'configuration':config,'scope':'Fictional virtual-file capture-to-fresh-resumer study; not a complete host/tool or direct Resume/Check evaluation.'}
         dump(record/'manifest.json',manifest)
         snapshot = record/'snapshots';snapshot.mkdir()
         (snapshot/'skill.snapshot.md').write_text(skill)
-        (snapshot/'placebo.snapshot.txt').write_text(placebo)
+        freeze_control(snapshot, control)
         (snapshot/'BENCHMARK.snapshot.md').write_text((ROOT/'docs/BENCHMARK.md').read_text())
         dump(snapshot/'fixtures.snapshot.json',fs)
         dump(snapshot/'key.snapshot.json',{f['id']:key[f['id']] for f in fs})
-        for filename in ('prompts.py','metrics.py','providers.py','run.py'):
+        for filename in ('prompts.py','metrics.py','providers.py','run.py','control_selection.py'):
             (snapshot/(filename+'.snapshot.txt')).write_text((HERE/filename).read_text())
+    # Both new and resumed runs consume the verified record freeze, never current-file fallback.
+    placebo = read_frozen_control(record/'snapshots', skill, config['placebo_control']).text
     schedule = [(f,c,r) for r in range(repeats) for f in fs for c in CONDITIONS]
     random.Random(20261028).shuffle(schedule)
     masks = {f['id']+'|'+c+'|'+str(r):'trial-'+digest(identity+f['id']+c+str(r))[:12] for f,c,r in schedule}
@@ -314,6 +326,8 @@ def main(argv=None):
             trials.append(json.loads(path.read_text()))
         else:
             pending.append((f,c,r,mask))
+    if selected_mode != 'offline-smoke':
+        verify_live_inputs(config, skill)
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
         futures=[pool.submit(run_trial,f,c,r,mask,config,skill,placebo,key[f['id']],record,budget,args.offline_smoke) for f,c,r,mask in pending]
         for future in as_completed(futures):
@@ -349,4 +363,8 @@ def main(argv=None):
 
 
 if __name__=='__main__':
-    raise SystemExit(main())
+    try:
+        raise SystemExit(main())
+    except ControlError as error:
+        print('Evaluation stopped: ' + str(error), file=sys.stderr)
+        raise SystemExit(2)

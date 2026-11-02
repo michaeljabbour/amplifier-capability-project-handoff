@@ -1,0 +1,12 @@
+{
+  "protocol_version": "project-handoff-neutral-control/v2",
+  "controls": [
+    {
+      "control_id": "generic-assistance-v2",
+      "treatment_sha256": "2b2fdcc9d32b2b8d0bb725998e06725b57c07105ee63915286f70ee932104da8",
+      "corpus_path": "evals/controls/generic-assistance-v2.txt",
+      "corpus_sha256": "5aaa31dc7c5a89f40eb8a37028acdbfa8ea80b5c78f1bdcd2c0b614ae41b0d6c",
+      "selection": "prefix_complete_sentence"
+    }
+  ]
+}
